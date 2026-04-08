@@ -6,7 +6,7 @@
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/04 19:52:33 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/08 17:27:29 by chbenhiz         ###   ########.fr       */
+/*   Updated: 2026/04/08 18:23:32 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ typedef struct s_game
 
 int		get_map_height(char *filename);
 char	**read_map(char *filename);
-int		check_map_elements(t_game *game);
 void	flood_fill(char **map_copy, int x, int y);
 char	**duplicate_map(char **original_map, int height);
+void	free_matrix(char **matrix);
 
 int		check_walls(t_game *game);
 int		check_valid_path(t_game *game);

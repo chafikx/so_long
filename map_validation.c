@@ -6,7 +6,7 @@
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 17:57:26 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/08 17:57:27 by chbenhiz         ###   ########.fr       */
+/*   Updated: 2026/04/08 18:26:03 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ int	check_map_elements(t_game *game)
 	return (1);
 }
 
-int	check_walls(t_game *game)
+int	check_rectangular(t_game *game)
 {
-	int	x;
 	int	y;
+	int	x;
 
 	game->map_width = ft_strlen(game->map[0]);
 	if (game->map[0][game->map_width - 1] == '\n')
@@ -74,13 +74,30 @@ int	check_walls(t_game *game)
 			x++;
 		if (x != game->map_width)
 			return (0);
+		y++;
+	}
+	return (1);
+}
+
+int	check_walls(t_game *game)
+{
+	int	x;
+	int	y;
+
+	if (!check_rectangular(game))
+		return (0);
+	y = 0;
+	while (game->map[y])
+	{
 		x = 0;
 		while (game->map[y][x] && game->map[y][x] != '\n')
 		{
 			if (y == 0 || y == game->map_height - 1
 				|| x == 0 || x == game->map_width - 1)
+			{
 				if (game->map[y][x] != '1')
 					return (0);
+			}
 			x++;
 		}
 		y++;
@@ -93,7 +110,9 @@ int	check_valid_path(t_game *game)
 	char	**map_copy;
 	int		y;
 	int		x;
+	int		valid;
 
+	valid = 1;
 	map_copy = duplicate_map(game->map, game->map_height);
 	flood_fill(map_copy, game->player_x, game->player_y);
 	y = 0;
@@ -102,21 +121,12 @@ int	check_valid_path(t_game *game)
 		x = 0;
 		while (map_copy[y][x])
 		{
-            if (map_copy[y][x] == 'C' || map_copy[y][x] == 'E')
-            {
-                int i = 0;
-                while (map_copy[i])
-                    free(map_copy[i++]);
-                free(map_copy);
-                return (0);
-            }
+			if (map_copy[y][x] == 'C' || map_copy[y][x] == 'E')
+				valid = 0;
 			x++;
 		}
 		y++;
 	}
-	y = 0;
-	while (map_copy[y])
-		free(map_copy[y++]);
-	free(map_copy);
-	return (1);
+	free_matrix(map_copy);
+	return (valid);
 }

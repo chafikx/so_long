@@ -6,7 +6,7 @@
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 17:58:03 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/08 17:58:04 by chbenhiz         ###   ########.fr       */
+/*   Updated: 2026/04/08 18:17:34 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ int	close_game(t_game *game)
 		mlx_destroy_image(game->mlx_ptr, game->img_exit);
 	if (game->win_ptr)
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	mlx_destroy_display(game->mlx_ptr); free(game->mlx_ptr);
+	mlx_destroy_display(game->mlx_ptr);
+	free(game->mlx_ptr);
 	exit(0);
 	return (0);
 }
+
 int	close_game(t_game *game)
 {
 	ft_putstr_fd("Fermeture du jeu.\n", 1);

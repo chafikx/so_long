@@ -6,7 +6,7 @@
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 17:57:51 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/08 17:57:52 by chbenhiz         ###   ########.fr       */
+/*   Updated: 2026/04/08 18:26:25 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,19 @@ char	**duplicate_map(char **original_map, int height)
 	}
 	clone[i] = NULL;
 	return (clone);
+}
+
+void	free_matrix(char **matrix)
+{
+	int	i;
+
+	i = 0;
+	if (!matrix)
+		return ;
+	while (matrix[i])
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
 }
