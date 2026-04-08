@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_validation.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/08 17:57:26 by chbenhiz          #+#    #+#             */
+/*   Updated: 2026/04/08 17:57:27 by chbenhiz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	count_and_check(t_game *game, int *p, int *e, int y)
@@ -90,8 +102,14 @@ int	check_valid_path(t_game *game)
 		x = 0;
 		while (map_copy[y][x])
 		{
-			if (map_copy[y][x] == 'C' || map_copy[y][x] == 'E')
-				return (0);
+            if (map_copy[y][x] == 'C' || map_copy[y][x] == 'E')
+            {
+                int i = 0;
+                while (map_copy[i])
+                    free(map_copy[i++]);
+                free(map_copy);
+                return (0);
+            }
 			x++;
 		}
 		y++;
