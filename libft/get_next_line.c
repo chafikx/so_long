@@ -6,11 +6,11 @@
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 23:26:35 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/01/04 12:43:29 by chbenhiz         ###   ########.fr       */
+/*   Updated: 2026/04/08 21:59:29 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static char	*ft_new_stash(char *stash)
 {

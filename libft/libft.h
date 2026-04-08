@@ -6,7 +6,7 @@
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 04:46:03 by chbenhiz          #+#    #+#             */
-/*   Updated: 2025/11/29 05:56:40 by chbenhiz         ###   ########.fr       */
+/*   Updated: 2026/04/08 22:18:55 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,12 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+// +gnl
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# define FD_MAX 4096
+
+char	*get_next_line(int fd);
 #endif

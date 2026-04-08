@@ -9,7 +9,7 @@ OBJS		= $(SRCS:.c=.o)
 LIBFT_DIR	= libft
 LIBFT		= $(LIBFT_DIR)/libft.a
 
-MLX_DIR		= mlx
+MLX_DIR		= minilibx-linux
 MLX_FLAGS	= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
 
 all: $(NAME)
