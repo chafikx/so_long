@@ -6,7 +6,7 @@
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 23:26:35 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/08 21:59:29 by chbenhiz         ###   ########.fr       */
+/*   Updated: 2026/04/08 22:28:03 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ static char	*ft_read_stash(int fd, char *stash)
 	char	*buf;
 	ssize_t	r;
 
+	if (!stash)
+		stash = ft_calloc(1, 1);
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (free(stash), NULL);
