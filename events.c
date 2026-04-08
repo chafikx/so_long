@@ -5,30 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/08 17:58:03 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/08 18:17:34 by chbenhiz         ###   ########.fr       */
+/*   Created: 2026/04/08 18:37:12 by chbenhiz          #+#    #+#             */
+/*   Updated: 2026/04/08 18:37:14 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_map(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	if (game->map)
-	{
-		while (game->map[i])
-			free(game->map[i++]);
-		free(game->map);
-	}
-}
-
 int	close_game(t_game *game)
 {
 	ft_putstr_fd("Fermeture du jeu.\n", 1);
-	free_map(game);
+	free_matrix(game->map);
 	if (game->img_wall)
 		mlx_destroy_image(game->mlx_ptr, game->img_wall);
 	if (game->img_floor)
@@ -43,13 +30,6 @@ int	close_game(t_game *game)
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
-	exit(0);
-	return (0);
-}
-
-int	close_game(t_game *game)
-{
-	ft_putstr_fd("Fermeture du jeu.\n", 1);
 	exit(0);
 	return (0);
 }

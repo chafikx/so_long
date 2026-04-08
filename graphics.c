@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/08 17:58:01 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/08 18:26:10 by chbenhiz         ###   ########.fr       */
+/*   Created: 2026/04/08 18:37:40 by chbenhiz          #+#    #+#             */
+/*   Updated: 2026/04/08 18:38:25 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,16 @@ void	load_images(t_game *game)
 	int	w;
 	int	h;
 
-	game->img_wall = mlx_xpm_file_to_image(game->mlx_ptr, "assets/wall.xpm", &w, &h);
-	game->img_floor = mlx_xpm_file_to_image(game->mlx_ptr, "assets/floor.xpm", &w, &h);
-	game->img_player = mlx_xpm_file_to_image(game->mlx_ptr, "assets/player.xpm", &w, &h);
-	game->img_collect = mlx_xpm_file_to_image(game->mlx_ptr, "assets/collect.xpm", &w, &h);
-	game->img_exit = mlx_xpm_file_to_image(game->mlx_ptr, "assets/exit.xpm", &w, &h);
+	game->img_wall = mlx_xpm_file_to_image(game->mlx_ptr,
+			"assets/wall.xpm", &w, &h);
+	game->img_floor = mlx_xpm_file_to_image(game->mlx_ptr,
+			"assets/floor.xpm", &w, &h);
+	game->img_player = mlx_xpm_file_to_image(game->mlx_ptr,
+			"assets/player.xpm", &w, &h);
+	game->img_collect = mlx_xpm_file_to_image(game->mlx_ptr,
+			"assets/collect.xpm", &w, &h);
+	game->img_exit = mlx_xpm_file_to_image(game->mlx_ptr,
+			"assets/exit.xpm", &w, &h);
 	if (!game->img_wall || !game->img_floor || !game->img_player
 		|| !game->img_collect || !game->img_exit)
 		exit(EXIT_FAILURE);

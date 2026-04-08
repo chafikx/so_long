@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/04 19:52:33 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/08 18:23:32 by chbenhiz         ###   ########.fr       */
+/*   Created: 2026/04/08 18:37:52 by chbenhiz          #+#    #+#             */
+/*   Updated: 2026/04/08 18:38:31 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
-//include libft mlx
+# include "libft/libft.h"
+# include "mlx/mlx.h"
 
 # define TILE_SIZE 64
 
@@ -45,11 +46,14 @@ void	flood_fill(char **map_copy, int x, int y);
 char	**duplicate_map(char **original_map, int height);
 void	free_matrix(char **matrix);
 
+int		check_map_elements(t_game *game);
+int		check_rectangular(t_game *game);
 int		check_walls(t_game *game);
 int		check_valid_path(t_game *game);
 
 void	init_graphics(t_game *game);
 void	load_images(t_game *game);
+void	put_sprite(t_game *game, int x, int y);
 int		render_map(t_game *game);
 
 int		key_input(int keycode, t_game *game);
