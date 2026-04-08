@@ -6,7 +6,7 @@
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 18:37:52 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/08 18:38:31 by chbenhiz         ###   ########.fr       */
+/*   Updated: 2026/04/08 18:57:40 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include "libft/libft.h"
-# include "mlx/mlx.h"
+# include "minilibx-linux/mlx.h"
 
 # define TILE_SIZE 64
 
