@@ -6,7 +6,7 @@
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 17:57:51 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/10 13:27:14 by chbenhiz         ###   ########.fr       */
+/*   Updated: 2026/04/10 17:13:39 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	get_map_height(char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
+	{
+		ft_putstr_fd("Error\nCannot open file\n", 2);
 		exit(EXIT_FAILURE);
+	}
 	height = 0;
 	while (1)
 	{
