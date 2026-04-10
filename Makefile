@@ -26,7 +26,7 @@ clean:
 
 fclean: clean
 	@make fclean -C $(LIBFT_DIR)
-	rm -f $(NAME)
+	rm -f $(NAME) 
 
 re: fclean all
 

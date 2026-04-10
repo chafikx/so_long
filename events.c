@@ -6,7 +6,7 @@
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 18:37:12 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/08 18:37:14 by chbenhiz         ###   ########.fr       */
+/*   Updated: 2026/04/10 16:10:04 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,37 +41,35 @@ void	move_player(t_game *game, int new_y, int new_x)
 	next_case = game->map[new_y][new_x];
 	if (next_case == '1')
 		return ;
+	if (next_case == 'E' && game->c_count == 0)
+		close_game(game);
+	if (game->map[game->player_y][game->player_x] == 'P')
+		game->map[game->player_y][game->player_x] = '0';
 	if (next_case == 'C')
 	{
 		game->c_count--;
 		game->map[new_y][new_x] = '0';
 	}
-	if (next_case == 'E')
-	{
-		if (game->c_count == 0)
-			close_game(game);
-		return ;
-	}
-	game->map[game->player_y][game->player_x] = '0';
 	game->player_y = new_y;
 	game->player_x = new_x;
-	game->map[new_y][new_x] = 'P';
+	if (game->map[new_y][new_x] != 'E')
+		game->map[new_y][new_x] = 'P';
 	game->moves++;
-	printf("Mouvements : %d\n", game->moves);
+	ft_printf("Mouvements : %d\n", game->moves);
 	render_map(game);
 }
 
 int	key_input(int keycode, t_game *game)
 {
-	if (keycode == 53 || keycode == 65307)
+	if (keycode == 65307)
 		close_game(game);
-	else if (keycode == 13 || keycode == 119)
+	else if (keycode == 119 || keycode == 122)
 		move_player(game, game->player_y - 1, game->player_x);
-	else if (keycode == 0 || keycode == 97)
+	else if (keycode == 97 || keycode == 113)
 		move_player(game, game->player_y, game->player_x - 1);
-	else if (keycode == 1 || keycode == 115)
+	else if (keycode == 115)
 		move_player(game, game->player_y + 1, game->player_x);
-	else if (keycode == 2 || keycode == 100)
+	else if (keycode == 100)
 		move_player(game, game->player_y, game->player_x + 1);
 	return (0);
 }
