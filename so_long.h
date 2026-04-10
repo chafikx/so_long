@@ -6,7 +6,7 @@
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 18:37:52 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/08 21:56:44 by chbenhiz         ###   ########.fr       */
+/*   Updated: 2026/04/10 16:41:34 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SO_LONG_H
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include "libft/libft.h"

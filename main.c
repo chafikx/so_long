@@ -6,7 +6,7 @@
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 17:57:57 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/08 18:26:17 by chbenhiz         ###   ########.fr       */
+/*   Updated: 2026/04/10 16:36:45 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	main(int argc, char **argv)
 	if (!game.map || !validate_all(&game))
 	{
 		ft_putstr_fd("Error\nInvalid map\n", 2);
+		free_matrix(game.map);
 		return (1);
 	}
 	init_graphics(&game);
