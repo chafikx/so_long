@@ -6,7 +6,7 @@
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 17:57:57 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/10 16:36:45 by chbenhiz         ###   ########.fr       */
+/*   Updated: 2026/04/10 16:52:39 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 
+	ft_bzero(&game, sizeof(t_game));
 	if (argc != 2)
 	{
 		ft_putstr_fd("Error\nUsage: ./so_long <map.ber>\n", 2);

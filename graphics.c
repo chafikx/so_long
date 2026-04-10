@@ -6,7 +6,7 @@
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 18:37:40 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/08 18:38:25 by chbenhiz         ###   ########.fr       */
+/*   Updated: 2026/04/10 16:55:01 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	init_graphics(t_game *game)
 {
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
-		exit(EXIT_FAILURE);
+		close_game(game);
 	game->win_ptr = mlx_new_window(game->mlx_ptr,
 			game->map_width * TILE_SIZE,
 			game->map_height * TILE_SIZE, "so_long");
 	if (!game->win_ptr)
-		exit(EXIT_FAILURE);
+		close_game(game);
 }
 
 void	load_images(t_game *game)
@@ -41,26 +41,26 @@ void	load_images(t_game *game)
 			"assets/exit.xpm", &w, &h);
 	if (!game->img_wall || !game->img_floor || !game->img_player
 		|| !game->img_collect || !game->img_exit)
-		exit(EXIT_FAILURE);
+		close_game(game);
 }
 
 void	put_sprite(t_game *game, int x, int y)
 {
 	if (game->map[y][x] != '1' && game->map[y][x] != '\n')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img_floor, x * 64, y * 64);
+			game->img_floor, x * TILE_SIZE, y * TILE_SIZE);
 	if (game->map[y][x] == '1')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img_wall, x * 64, y * 64);
+			game->img_wall, x * TILE_SIZE, y * TILE_SIZE);
 	else if (game->map[y][x] == 'C')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img_collect, x * 64, y * 64);
+			game->img_collect, x * TILE_SIZE, y * TILE_SIZE);
 	else if (game->map[y][x] == 'E')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img_exit, x * 64, y * 64);
+			game->img_exit, x * TILE_SIZE, y * TILE_SIZE);
 	else if (game->map[y][x] == 'P')
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->img_player, x * 64, y * 64);
+			game->img_player, x * TILE_SIZE, y * TILE_SIZE);
 }
 
 int	render_map(t_game *game)
@@ -79,5 +79,8 @@ int	render_map(t_game *game)
 		}
 		y++;
 	}
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+		game->img_player, game->player_x * TILE_SIZE,
+		game->player_y * TILE_SIZE);
 	return (0);
 }
