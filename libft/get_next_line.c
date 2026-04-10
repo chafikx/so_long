@@ -6,7 +6,7 @@
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 23:26:35 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/08 22:28:03 by chbenhiz         ###   ########.fr       */
+/*   Updated: 2026/04/10 18:00:13 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static char	*ft_get_line(char *stash)
 static char	*ft_read_stash(int fd, char *stash)
 {
 	char	*buf;
+	char	*temp;
 	ssize_t	r;
 
 	if (!stash)
@@ -79,7 +80,9 @@ static char	*ft_read_stash(int fd, char *stash)
 		buf[r] = 0;
 		if (r == 0)
 			break ;
-		stash = ft_strjoin(stash, buf);
+		temp = ft_strjoin(stash, buf);
+		free(stash);
+		stash = temp;
 		if (!stash)
 			return (free(buf), NULL);
 	}
