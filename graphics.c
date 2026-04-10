@@ -6,7 +6,7 @@
 /*   By: chbenhiz <chbenhiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 18:37:40 by chbenhiz          #+#    #+#             */
-/*   Updated: 2026/04/10 16:55:01 by chbenhiz         ###   ########.fr       */
+/*   Updated: 2026/04/10 17:46:10 by chbenhiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,19 @@
 
 void	init_graphics(t_game *game)
 {
+	int	screen_width;
+	int	screen_height;
+
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
 		close_game(game);
+	mlx_get_screen_size(game->mlx_ptr, &screen_width, &screen_height);
+	if ((game->map_width * TILE_SIZE) > screen_width
+		|| (game->map_height * TILE_SIZE) > screen_height)
+	{
+		ft_putstr_fd("Error\nLa carte est trop grande pour l'écran\n", 2);
+		close_game(game);
+	}
 	game->win_ptr = mlx_new_window(game->mlx_ptr,
 			game->map_width * TILE_SIZE,
 			game->map_height * TILE_SIZE, "so_long");
